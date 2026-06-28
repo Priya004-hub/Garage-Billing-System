@@ -1,4 +1,4 @@
-<script src="js files/login.js"></script>
+<script src="js files/index.js"></script>
 
 function login() {
 
@@ -8,8 +8,8 @@ function login() {
     let password =
         document.getElementById("password").value;
 
-    if(username === "admin" &&
-       password === "admin123") {
+    if(username === "Selvanayaki" &&
+       password === "Selvi@123") {
 
         window.location.href =
             "billing.html";
