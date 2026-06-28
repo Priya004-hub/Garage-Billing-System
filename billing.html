@@ -14,7 +14,7 @@
 <h2>Billing System</h2>
 
 <label>Bill No</label>
-<input type="text" id="billNo" readonly>
+<input type="text" id="billNo">
 
 <label>Date & Time</label>
 <input type="text" id="dateTime" readonly>
@@ -41,7 +41,7 @@
 <br><br>
 
 <button onclick="saveBill()">Save Bill</button>
-<button onclick="window.print()">Print Bill</button>
+<button onclick="printBill()">Print Bill</button>
 <button onclick="openReports()">View Reports</button>
 <button onclick="logout()">Logout</button>
 
@@ -58,7 +58,7 @@
 <script>
 function logout() {
     localStorage.removeItem("isLoggedIn");
-    window.location.href = "login.html";
+    window.location.href = "index.html";
 }
 </script>
 </body>
