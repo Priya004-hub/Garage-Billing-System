@@ -1,4 +1,4 @@
-<script src="js files/index.js"></script>
+<script src="index.js"></script>
 
 function login() {
 
