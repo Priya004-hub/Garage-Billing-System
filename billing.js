@@ -1,4 +1,4 @@
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxs_9KqMNVBXB_aLASUMhf9_mLNkmcTIJveF10duDUU6E4jCkXKOCc3uIVcewpBNw4K/exec";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwUf6y3M3pHIPtZrhwl8x-muQpDTtAQnATnHoOwOHnjxNaPLzXyb8lIIO-Cy7niTLCt/exec";
 // Auto Date & Time
 function setDateTime() {
 const now = new Date();
