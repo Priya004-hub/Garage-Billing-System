@@ -1,65 +1,68 @@
 <!DOCTYPE html>
-
 <html>
 
 <head>
-    <title>Billing System</title>
-    <link rel="stylesheet" href="style.css">
+    <title>SSCSC eSevai Center - Billing System</title>
+    <link rel="stylesheet" href="css files/style.css">
 </head>
 
 <body>
 
 <div class="container">
 
-<h2>Billing System</h2>
+    <h2>SSCSC eSevai Center</h2>
 
-<label>Bill No</label>
-<input type="text" id="billNo">
+    <label>Bill No</label>
+    <input type="text" id="billNo" readonly>
 
-<label>Date & Time</label>
-<input type="text" id="dateTime" readonly>
+    <label>Date & Time</label>
+    <input type="text" id="dateTime" readonly>
 
+    <label>Amount</label>
+    <input type="number" id="amount" placeholder="Enter Amount">
 
-<label>Amount</label>
-<input type="number" id="amount">
+    <label>Payment Mode</label>
 
-<label>Payment Mode</label>
+    <div class="payment-mode">
 
-<div class="payment-mode">
+        <label>
+            <input type="radio" name="paymentMode" value="Cash">
+            Cash
+        </label>
 
-    <label><input type="radio" name="paymentMode" value="Cash" checked> Cash</label>
+        <label>
+            <input type="radio" name="paymentMode" value="GPay">
+            GPay
+        </label>
 
-    <label><input type="radio" name="paymentMode" value="GPay"> GPay</label>
+        <label>
+            <input type="radio" name="paymentMode" value="Other">
+            Other
+        </label>
 
-    <label><input type="radio" name="paymentMode" value="Other"> Other</label>
+    </div>
+
+    <label>Description</label>
+    <textarea id="description" placeholder="Enter Description"></textarea>
+
+    <br><br>
+
+    <button onclick="saveBill()">💾 Save Bill</button>
+
+    <button onclick="printBill()">🖨 Print Bill</button>
+
+    <button onclick="openReports()">📊 View Reports</button>
+
+    <button onclick="logout()">🚪 Logout</button>
+
+    <br><br>
+
+    <div id="msg"></div>
 
 </div>
 
-<label>Description</label>
-<textarea id="description" ></textarea>
+<script src="js files/billing.js"></script>
 
-<br><br>
-
-<button onclick="saveBill()">Save Bill</button>
-<button onclick="printBill()">Print Bill</button>
-<button onclick="openReports()">View Reports</button>
-<button onclick="logout()">Logout</button>
-
-<br><br>
-
-<div id="msg"></div>
-
-
-</div>
-
-
-<script src="billing.js"></script>
-
-<script>
-function logout() {
-    localStorage.removeItem("isLoggedIn");
-    window.location.href = "index.html";
-}
-</script>
 </body>
+
 </html>
