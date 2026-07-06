@@ -253,6 +253,19 @@ function restorePaymentMode() {
     }
 
 }
+function logout() {
+
+    // Remove only the login session
+    localStorage.removeItem("isLoggedIn");
+
+    // Keep username & password if Remember Me is enabled
+    if (localStorage.getItem("rememberMe") !== "true") {
+        localStorage.removeItem("savedUsername");
+        localStorage.removeItem("savedPassword");
+    }
+
+    window.location.href = "index.html";
+}
 
 // Run on Page Load
 window.onload = function () {
