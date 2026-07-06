@@ -1,42 +1,13 @@
-// If already logged in, go directly to Billing Page
-if (localStorage.getItem("isLoggedIn") === "true") {
-    window.location.href = "billing.html";
-}
-
-// Login Function
-function login() {
-
-    const username = document.getElementById("username").value.trim();
-    const password = document.getElementById("password").value.trim();
-    const remember = document.getElementById("rememberMe").checked;
-
-    if (username === "Selvanayaki" && password === "Selvi@123") {
-
-        localStorage.setItem("isLoggedIn", "true");
-
-        if (remember) {
-            localStorage.setItem("savedUsername", username);
-            localStorage.setItem("savedPassword", password);
-            localStorage.setItem("rememberMe", "true");
-        } else {
-            localStorage.removeItem("savedUsername");
-            localStorage.removeItem("savedPassword");
-            localStorage.removeItem("rememberMe");
-        }
-
-        alert("Login Successful");
-        window.location.href = "billing.html";
-
-    } else {
-
-        alert("Invalid Username or Password");
-
-    }
-}
-
-// Load saved credentials
+// Check login status and restore saved credentials
 window.onload = function () {
 
+    // If already logged in, go directly to Billing Page
+    if (localStorage.getItem("isLoggedIn") === "true") {
+        window.location.href = "billing.html";
+        return;
+    }
+
+    // Load saved username & password
     if (localStorage.getItem("rememberMe") === "true") {
 
         document.getElementById("username").value =
@@ -49,3 +20,42 @@ window.onload = function () {
     }
 
 };
+
+// Login Function
+function login() {
+
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const remember = document.getElementById("rememberMe").checked;
+
+    if (username === "Selvanayaki" &&
+        password === "Selvi@123") {
+
+        // Login successful
+        localStorage.setItem("isLoggedIn", "true");
+
+        if (remember) {
+
+            localStorage.setItem("savedUsername", username);
+            localStorage.setItem("savedPassword", password);
+            localStorage.setItem("rememberMe", "true");
+
+        } else {
+
+            localStorage.removeItem("savedUsername");
+            localStorage.removeItem("savedPassword");
+            localStorage.removeItem("rememberMe");
+
+        }
+
+        alert("✅ Login Successful");
+
+        window.location.href = "billing.html";
+
+    } else {
+
+        alert("❌ Invalid Username or Password");
+
+    }
+
+}
