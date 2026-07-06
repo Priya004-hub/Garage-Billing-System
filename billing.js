@@ -253,22 +253,6 @@ function restorePaymentMode() {
     }
 
 }
-function logout() {
-
-    // Logout current session
-    localStorage.removeItem("isLoggedIn");
-
-    // Keep username/password only if Remember Me is checked
-    if (localStorage.getItem("rememberMe") !== "true") {
-
-        localStorage.removeItem("savedUsername");
-        localStorage.removeItem("savedPassword");
-
-    }
-
-    window.location.href = "index.html";
-
-}
 
 // Run on Page Load
 window.onload = function () {
