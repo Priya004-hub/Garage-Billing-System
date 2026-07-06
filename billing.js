@@ -1,4 +1,4 @@
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwUf6y3M3pHIPtZrhwl8x-muQpDTtAQnATnHoOwOHnjxNaPLzXyb8lIIO-Cy7niTLCt/exec";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbybqhpdY5ilSjyfCh_-WD0l_75EdfAWFBLvDhr2fYw/dev";
 // Auto Date & Time
 function setDateTime() {
 const now = new Date();
@@ -167,16 +167,15 @@ function printBill() {
 // Generate Bill Number
 function generateBillNo() {
 
-let currentNo =
-    parseInt(localStorage.getItem("billCounter") || 1);
+    let currentNo = parseInt(localStorage.getItem("billCounter") || 1);
 
-document.getElementById("billNo").value =
-    "ID" + String(currentNo).padStart(2, '0');
+    document.getElementById("billNo").value =
+        "ID" + String(currentNo).padStart(4, '0');
 
 }
 function openReports() {
     window.open(
-        "https://docs.google.com/spreadsheets/d/1IfWlPUjZViWfR3VLycx7an-7DfcK-_r_53nwwKO_gj4/edit?gid=0#gid=0",
+        "https://docs.google.com/spreadsheets/d/1AF_gcWYApPa6qMEStFrF0EGYBL-_zFuNH-hCWmq6WRU/edit?gid=0#gid=0",
         "_blank"
     );
 }
@@ -184,58 +183,84 @@ function openReports() {
 // Save Bill
 function saveBill() {
 
-const data = {
-    amount: document.getElementById("amount").value,
-    paymentMode: document.querySelector('input[name="paymentMode"]:checked').value,
-    description: document.getElementById("description").value
-};
-console.log(data);
+    const data = {
+        billNo: document.getElementById("billNo").value,
+        dateTime: document.getElementById("dateTime").value,
+        amount: document.getElementById("amount").value,
+        paymentMode: document.querySelector('input[name="paymentMode"]:checked').value,
+        description: document.getElementById("description").value
+    };
 
-alert(
-  "BillNo: " + data.billNo +
-  "\nDateTime: " + data.dateTime
-);
+    // Save selected payment mode
+    localStorage.setItem("lastPaymentMode", data.paymentMode);
 
-fetch(WEB_APP_URL, {
-    method: "POST",
-    body: JSON.stringify(data)
-})
-.then(response => response.text())
-.then(result => {
+    fetch(WEB_APP_URL, {
+        method: "POST",
+        body: JSON.stringify(data)
+    })
+    .then(response => response.text())
+    .then(result => {
 
-    alert("✓ Bill Saved Successfully");
+        alert("✓ Bill Saved Successfully");
 
-    // Increase Bill Number
-    let currentNo =
-        parseInt(localStorage.getItem("billCounter") || 1);
+        // Increase Bill Number
+        let currentNo = parseInt(localStorage.getItem("billCounter") || 1);
+        currentNo++;
+        localStorage.setItem("billCounter", currentNo);
 
-    currentNo++;
+        // Clear only required fields
+        document.getElementById("amount").value = "";
+        document.getElementById("description").value = "";
 
-    localStorage.setItem(
-        "billCounter",
-        currentNo
-    );
+        // Generate next Bill No
+        generateBillNo();
 
-    // Clear Form
-    document.getElementById("amount").value = "";
-    document.getElementById("description").value = "";
+        // Update Date & Time
+        setDateTime();
 
-    // Refresh Auto Fields
-    setDateTime();
-    generateBillNo();
-})
-.catch(error => {
+        // Keep same payment mode
+        restorePaymentMode();
 
-    alert("❌ Error Saving Bill");
+    })
+    .catch(error => {
 
-    console.log(error);
-});
+        alert("❌ Error Saving Bill");
+        console.log(error);
 
+    });
+
+}
+function restorePaymentMode() {
+
+    var lastMode = localStorage.getItem("lastPaymentMode");
+
+    if (lastMode) {
+
+        var radio = document.querySelector(
+            'input[name="paymentMode"][value="' + lastMode + '"]'
+        );
+
+        if (radio) {
+            radio.checked = true;
+        }
+
+    } else {
+
+        document.querySelector(
+            'input[name="paymentMode"][value="Cash"]'
+        ).checked = true;
+
+    }
 
 }
 
 // Run on Page Load
-window.onload = function() {
-setDateTime();
-generateBillNo();
+window.onload = function () {
+
+    generateBillNo();
+
+    setDateTime();
+
+    restorePaymentMode();
+
 };
