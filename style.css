@@ -200,3 +200,28 @@ td{
     text-align:center;
 
 }
+.remember{
+
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:20px;
+
+}
+
+.remember input{
+
+    width:18px;
+    height:18px;
+    margin:0;
+    cursor:pointer;
+
+}
+
+.remember label{
+
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+
+}
