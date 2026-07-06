@@ -1,4 +1,4 @@
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbybqhpdY5ilSjyfCh_-WD0l_75EdfAWFBLvDhr2fYw/dev";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwVvlNJmKSZj2pIdzReNCxsW_uoDWtSIp9BlP5ipLajS_dZfDMouh2BxwIYlorAgzDd/exec";
 // Auto Date & Time
 function setDateTime() {
 const now = new Date();
@@ -175,7 +175,7 @@ function generateBillNo() {
 }
 function openReports() {
     window.open(
-        "https://docs.google.com/spreadsheets/d/1AF_gcWYApPa6qMEStFrF0EGYBL-_zFuNH-hCWmq6WRU/edit?gid=0#gid=0",
+        "https://docs.google.com/spreadsheets/d/1tePj4TK6Y74TFmBkTnvwcprNUHseUG-B-rNvOLq8nqQ/edit?gid=0#gid=0",
         "_blank"
     );
 }
