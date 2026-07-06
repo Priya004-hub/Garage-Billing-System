@@ -1,4 +1,4 @@
-const WEB_APP_URL="https://script.google.com/macros/s/AKfycbwVvlNJmKSZj2pIdzReNCxsW_uoDWtSIp9BlP5ipLajS_dZfDMouh2BxwIYlorAgzDd/exec";
+const WEB_APP_URL="https://script.google.com/macros/s/AKfycbwFBLDghXms4gMkUVnUCfWKBdnH1_H58bZXq139r-7AUdvt7MhnDB4kfLmcVWJPFE_i/exec";
 
 const REPORT_URL="https://docs.google.com/spreadsheets/d/1tePj4TK6Y74TFmBkTnvwcprNUHseUG-B-rNvOLq8nqQ/edit";
 
