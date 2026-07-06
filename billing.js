@@ -158,7 +158,7 @@ function printBill() {
 
     win.focus();
 
-   window.print();
+   win.print();
 
     win.close();
 
