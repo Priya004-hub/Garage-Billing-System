@@ -56,7 +56,6 @@ description:document.getElementById("description").value
 
 };
 
-localStorage.setItem("lastPaymentMode",payment.value);
 
 fetch(WEB_APP_URL,{
 
@@ -270,12 +269,15 @@ window.location.href="index.html";
 
 }
 
-window.onload=function(){
+window.onload = function () {
 
-generateBillNo();
+    generateBillNo();
 
-setDateTime();
+    setDateTime();
 
-restorePaymentMode();
+    // Default payment mode
+    document.querySelector(
+        'input[name="paymentMode"][value="Cash"]'
+    ).checked = true;
 
 };
