@@ -20,28 +20,6 @@ now.toLocaleDateString("en-GB")+" "+now.toLocaleTimeString();
 
 }
 
-function restorePaymentMode(){
-
-let last=localStorage.getItem("lastPaymentMode");
-
-if(last){
-
-let radio=document.querySelector('input[name="paymentMode"][value="'+last+'"]');
-
-if(radio){
-
-radio.checked=true;
-
-}
-
-}else{
-
-document.querySelector('input[value="Cash"]').checked=true;
-
-}
-
-}
-
 function saveBill(){
 
 const payment=document.querySelector('input[name="paymentMode"]:checked');
